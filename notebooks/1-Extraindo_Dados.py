@@ -1,9 +1,4 @@
 # Databricks notebook source
-dbutils.widgets.text("data_execucao", "")
-data_execucao = dbutils.widgets.get("data_execucao")
-
-# COMMAND ----------
-
 #Instalando pacote para proteção de tokens/keys
 %pip install python-dotenv
 
@@ -13,6 +8,11 @@ data_execucao = dbutils.widgets.get("data_execucao")
 from dotenv import dotenv_values
 import requests
 from pyspark.sql.functions import lit
+
+# COMMAND ----------
+
+dbutils.widgets.text("data_execucao", "")
+data_execucao = dbutils.widgets.get("data_execucao")
 
 # COMMAND ----------
 
@@ -70,7 +70,3 @@ def salvar_arquivo_parquet(conversoes_extraidas):
 
 cotacoes = extraindo_dados(data_execucao)
 salvar_arquivo_parquet(cotacoes)
-
-# COMMAND ----------
-
-
